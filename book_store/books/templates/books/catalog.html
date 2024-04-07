@@ -1,3 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Catalog{% endblock %}
+
+{% block content %}
+
 <h2>Book Catalog</h2>
 {% for book in books %}
     <h3>{{ book.title }}</h3>
@@ -5,3 +11,4 @@
     <p>{{ book.description }}</p>
     <hr>
 {% endfor %}
+{% endblock %}
