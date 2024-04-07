@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
+from .models import Book, Favorite, News
 
 def register(request):
     if request.method == "POST":
@@ -31,3 +32,15 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return redirect('login')
+
+
+def home(request):
+    news_feed = News.objects.all().order_by('-date_posted')
+    return render(request, 'books/home.html', {'news_feed': news_feed})
+
+def favorite_books(request):
+    if request.user.is_authenticated:
+        favorites = Favorite.objects.filter(user=request.user)
+        return render(request, 'books/favorites.html', {'favorites': favorites})
+    else:
+        return redirect('login')

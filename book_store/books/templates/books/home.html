@@ -1,0 +1,6 @@
+<h2>New Arrivals</h2>
+{% for news in news_feed %}
+    <h3>{{ news.title }}</h3>
+    <p>{{ news.content }}</p>
+    <hr>
+{% endfor %}

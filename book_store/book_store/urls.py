@@ -23,4 +23,6 @@ urlpatterns = [
     path('register/', book_views.register, name='register'),
     path('login/', book_views.user_login, name='login'),
     path('logout/', book_views.user_logout, name='logout'),
+    path('', book_views.home, name='home'),
+    path('favorites/', book_views.favorite_books, name='favorites'),
 ]

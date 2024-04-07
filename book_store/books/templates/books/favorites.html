@@ -1,0 +1,6 @@
+<h2>Favorite Books</h2>
+{% for favorite in favorites %}
+    <h3>{{ favorite.book.title }}</h3>
+    <p>Author: {{ favorite.book.author }}</p>
+    <hr>
+{% endfor %}
