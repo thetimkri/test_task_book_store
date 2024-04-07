@@ -7,6 +7,9 @@ class Book(models.Model):
     description = models.TextField()
     added_by = models.ForeignKey(User, on_delete=models.CASCADE)
 
+    def comment_count(self):
+        return self.comments.count()
+
 class Favorite(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
@@ -24,3 +27,14 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+
+class Comment(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Comment by {self.user.username} on {self.book.title}'

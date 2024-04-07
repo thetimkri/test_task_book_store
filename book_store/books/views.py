@@ -3,7 +3,7 @@ from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Book, Favorite, News,Profile
 from django.contrib import messages
-from .forms import UserForm, ProfileForm
+from .forms import UserForm, ProfileForm, CommentForm
 from django.db.models import Q
 def register(request):
     if request.method == "POST":
@@ -109,3 +109,19 @@ def edit_profile(request):
 
 def view_profile(request):
     return render(request, 'books/view_profile.html')
+
+def book_detail(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    comments = book.comments.all()
+    new_comment = None
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.book = book
+            new_comment.user = request.user
+            new_comment.save()
+            return redirect('book_detail', book_id=book.id)
+    else:
+        comment_form = CommentForm()
+    return render(request, 'books/book_detail.html', {'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})

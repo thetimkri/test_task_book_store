@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Comments</h2>
+{% for comment in comments %}
+<div class="comment">
+    <p>{{ comment.text }}</p>
+    <p>Posted by {{ comment.user.username }} on {{ comment.created_date }}</p>
+</div>
+{% endfor %}
+
+{% if new_comment %}
+<p>Your comment has been added.</p>
+{% endif %}
+
+<h2>Add a comment</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
