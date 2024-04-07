@@ -6,6 +6,7 @@ from django.contrib import messages
 from .forms import UserForm, ProfileForm, CommentForm
 from django.db.models import Q
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -142,14 +143,21 @@ def book_detail(request, book_id):
     return render(request, 'books/book_detail.html', {'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
 def mark_as_read(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': True})
-    return redirect('catalog')
+    if request.user.is_authenticated:
+        book = get_object_or_404(Book, id=book_id)
+        ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': True})
+        return redirect('catalog')
+    else:
+        return redirect('login')
+
 
 def mark_as_unread(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': False})
-    return redirect('catalog')
+    if request.user.is_authenticated:
+        book = get_object_or_404(Book, id=book_id)
+        ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': False})
+        return redirect('catalog')
+    else:
+        return redirect('login')
 
 def view_user_profile(request, user_id):
     user = get_object_or_404(User, id=user_id)
