@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
-from .models import Book, Favorite, News,Profile
+from .models import Book, Favorite, News,Profile,ReadStatus
 from django.contrib import messages
 from .forms import UserForm, ProfileForm, CommentForm
 from django.db.models import Q
@@ -49,12 +49,26 @@ def favorite_books(request):
 
 def book_catalog(request):
     query = request.GET.get('q', '')
+    message = None
+
     if query:
         books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
         message = f"Found {books.count()} books matching your query."
     else:
         books = Book.objects.all()
-        message = "Please enter a query to search books."
+
+    if request.user.is_authenticated:
+        favorite_books = {fav.book.id: fav for fav in request.user.favorite_set.all()}
+        read_statuses = {status.book.id: status.is_read for status in ReadStatus.objects.filter(user=request.user)}
+    else:
+        favorite_books = {}
+        read_statuses = {}
+
+    for book in books:
+        book.is_favorite = book.id in favorite_books
+        book.is_read = read_statuses.get(book.id, False)
+        book.favorite_id = favorite_books.get(book.id, {}).id if book.is_favorite else None
+
     return render(request, 'books/catalog.html', {'books': books, 'message': message})
 
 def add_to_favorites(request, book_id):
@@ -125,3 +139,13 @@ def book_detail(request, book_id):
     else:
         comment_form = CommentForm()
     return render(request, 'books/book_detail.html', {'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
+
+def mark_as_read(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': True})
+    return redirect('catalog')
+
+def mark_as_unread(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': False})
+    return redirect('catalog')

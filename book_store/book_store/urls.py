@@ -31,5 +31,7 @@ urlpatterns = [
     path('edit_profile/', book_views.edit_profile, name='edit_profile'),
     path('profile/', book_views.view_profile, name='profile'),
     path('books/<int:book_id>/', book_views.book_detail, name='book_detail'),
+    path('mark_as_read/<int:book_id>/', book_views.mark_as_read, name='mark_as_read'),
+    path('mark_as_unread/<int:book_id>/', book_views.mark_as_unread, name='mark_as_unread'),
 
 ]
