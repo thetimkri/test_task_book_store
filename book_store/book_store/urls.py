@@ -25,4 +25,5 @@ urlpatterns = [
     path('logout/', book_views.user_logout, name='logout'),
     path('', book_views.home, name='home'),
     path('favorites/', book_views.favorite_books, name='favorites'),
+    path('catalog/', book_views.book_catalog, name='catalog'),
 ]

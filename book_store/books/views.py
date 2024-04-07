@@ -44,3 +44,7 @@ def favorite_books(request):
         return render(request, 'books/favorites.html', {'favorites': favorites})
     else:
         return redirect('login')
+
+def book_catalog(request):
+    books = Book.objects.all()
+    return render(request, 'books/catalog.html', {'books': books})
