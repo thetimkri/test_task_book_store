@@ -65,3 +65,16 @@ def add_to_favorites(request, book_id):
     else:
         messages.error(request,'Something went wrong')
         return redirect('login')
+
+def remove_from_favorites(request, book_id):
+    if request.user.is_authenticated:
+        book = get_object_or_404(Book, id=book_id)
+        favorite = Favorite.objects.filter(user=request.user, book=book)
+        if favorite.exists():
+            favorite.delete()
+            messages.success(request, 'Книга удалена из избранного.')
+        else:
+            messages.info(request, 'Книга не найдена в избранном.')
+        return redirect('favorites')
+    else:
+        return redirect('login')

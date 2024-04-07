@@ -7,6 +7,7 @@
 {% for favorite in favorites %}
     <h3>{{ favorite.book.title }}</h3>
     <p>Author: {{ favorite.book.author }}</p>
+    <a href="{% url 'remove_from_favorites' favorite.book.id %}" class="btn btn-danger">Удалить из избранного</a>
     <hr>
 {% endfor %}
 {% endblock %}
