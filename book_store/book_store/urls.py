@@ -28,5 +28,7 @@ urlpatterns = [
     path('catalog/', book_views.book_catalog, name='catalog'),
     path('books/remove_from_favorites/<int:book_id>/', book_views.remove_from_favorites, name='remove_from_favorites'),
     path('books/add_to_favorites/<int:book_id>/', book_views.add_to_favorites, name='add_to_favorites'),
+    path('edit_profile/', book_views.edit_profile, name='edit_profile'),
+    path('profile/', book_views.view_profile, name='profile'),
 
 ]

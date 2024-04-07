@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect,get_object_or_404
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
-from .models import Book, Favorite, News
+from .models import Book, Favorite, News,Profile
 from django.contrib import messages
-
+from .forms import UserForm, ProfileForm
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -72,9 +72,34 @@ def remove_from_favorites(request, book_id):
         favorite = Favorite.objects.filter(user=request.user, book=book)
         if favorite.exists():
             favorite.delete()
-            messages.success(request, 'Книга удалена из избранного.')
+            messages.success(request, 'The book has been removed from favorites.')
         else:
-            messages.info(request, 'Книга не найдена в избранном.')
+            messages.info(request, 'Book not found in favorites.')
         return redirect('favorites')
     else:
         return redirect('login')
+
+
+def edit_profile(request):
+    try:
+        profile = request.user.profile
+    except Profile.DoesNotExist:
+        profile = Profile.objects.create(user=request.user)
+
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Information successfully changed')
+            return redirect('profile')
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=profile)
+
+    return render(request, 'books/edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
+
+
+def view_profile(request):
+    return render(request, 'books/view_profile.html')
