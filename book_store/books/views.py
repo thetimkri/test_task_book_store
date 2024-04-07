@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Book, Favorite, News,Profile
 from django.contrib import messages
 from .forms import UserForm, ProfileForm
+from django.db.models import Q
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -47,9 +48,14 @@ def favorite_books(request):
         return redirect('login')
 
 def book_catalog(request):
-    books = Book.objects.all()
-    return render(request, 'books/catalog.html', {'books': books})
-
+    query = request.GET.get('q', '')
+    if query:
+        books = Book.objects.filter(Q(title__icontains=query) | Q(author__icontains=query))
+        message = f"Found {books.count()} books matching your query."
+    else:
+        books = Book.objects.all()
+        message = "Please enter a query to search books."
+    return render(request, 'books/catalog.html', {'books': books, 'message': message})
 
 def add_to_favorites(request, book_id):
 

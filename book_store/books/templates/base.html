@@ -38,6 +38,12 @@
                 {% endif %}
             </ul>
         </div>
+        <div>
+            <form method="get" action="{% url 'catalog' %}">
+                <input type="text" name="q" placeholder="Search books...">
+                <button class="btn btn-info" type="submit">Search</button>
+            </form>
+        </div>
     </nav>
 
     <div class="container">

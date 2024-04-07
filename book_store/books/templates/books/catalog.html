@@ -5,6 +5,9 @@
 {% block content %}
 
 <h2>Book Catalog</h2>
+{% if message %}
+<p>{{ message }}</p>
+{% endif %}
 {% for book in books %}
     <h3>{{ book.title }}</h3>
     <p>Author: {{ book.author }}</p>
