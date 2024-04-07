@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login, logout
 from .models import Book, Favorite, News
+from django.contrib import messages
 
 def register(request):
     if request.method == "POST":
@@ -48,3 +49,19 @@ def favorite_books(request):
 def book_catalog(request):
     books = Book.objects.all()
     return render(request, 'books/catalog.html', {'books': books})
+
+
+def add_to_favorites(request, book_id):
+
+    book = get_object_or_404(Book, id=book_id)
+    if request.user.is_authenticated:
+        favorite, created = Favorite.objects.get_or_create(user=request.user, book=book)
+        if created:
+            messages.success(request, 'Tne book add to favorite')
+            return redirect('catalog')
+        else:
+            messages.info(request, 'The book is already in your favorites')
+            return redirect('catalog')
+    else:
+        messages.error(request,'Something went wrong')
+        return redirect('login')

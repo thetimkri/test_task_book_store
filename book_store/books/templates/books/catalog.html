@@ -9,6 +9,7 @@
     <h3>{{ book.title }}</h3>
     <p>Author: {{ book.author }}</p>
     <p>{{ book.description }}</p>
+    <a href="{% url 'add_to_favorites' book.id %}" class="btn btn-primary">Add to favorite</a>
     <hr>
 {% endfor %}
 {% endblock %}

@@ -26,4 +26,6 @@ urlpatterns = [
     path('', book_views.home, name='home'),
     path('favorites/', book_views.favorite_books, name='favorites'),
     path('catalog/', book_views.book_catalog, name='catalog'),
+    path('books/add_to_favorites/<int:book_id>/', book_views.add_to_favorites, name='add_to_favorites'),
+
 ]
