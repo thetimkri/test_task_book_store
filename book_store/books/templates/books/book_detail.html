@@ -3,9 +3,9 @@
 {% block content %}
 <h2>Comments</h2>
 {% for comment in comments %}
-<div class="comment">
+<div class="comment" style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px;">
     <p>{{ comment.text }}</p>
-    <p>Posted by {{ comment.user.username }} on {{ comment.created_date }}</p>
+    <p>Posted by <a href="{% url 'view_user_profile' user_id=comment.user.id %}">{{ comment.user.username }}</a> on {{ comment.created_date }}</p>
 </div>
 {% endfor %}
 

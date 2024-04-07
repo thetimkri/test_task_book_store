@@ -5,6 +5,7 @@ from .models import Book, Favorite, News,Profile,ReadStatus
 from django.contrib import messages
 from .forms import UserForm, ProfileForm, CommentForm
 from django.db.models import Q
+from django.contrib.auth.models import User
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
@@ -149,3 +150,7 @@ def mark_as_unread(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': False})
     return redirect('catalog')
+
+def view_user_profile(request, user_id):
+    user = get_object_or_404(User, id=user_id)
+    return render(request, 'books/view_profile.html', {'user': user})
