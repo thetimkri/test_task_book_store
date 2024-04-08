@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Fix erore when not auth user can make book read and call mistake">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add loging">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_store/book_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/books/templates/books/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/templates/books/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/books/templates/books/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/templates/books/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712522288530</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Add loging">
+      <option name="closed" value="true" />
+      <created>1712561051971</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1712561051971</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -269,6 +276,7 @@
     <MESSAGE value="add mark to read book" />
     <MESSAGE value="frames for comments and links to users" />
     <MESSAGE value="Fix erore when not auth user can make book read and call mistake" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix erore when not auth user can make book read and call mistake" />
+    <MESSAGE value="Add loging" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add loging" />
   </component>
 </project>
