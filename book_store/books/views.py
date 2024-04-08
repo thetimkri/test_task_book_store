@@ -6,12 +6,15 @@ from django.contrib import messages
 from .forms import UserForm, ProfileForm, CommentForm
 from django.db.models import Q
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+import logging
+
+logger = logging.getLogger('django')
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            logger.info(f"New user registered: {user.username}")
             return redirect('login')
     else:
         form = RegisterForm()
@@ -26,14 +29,17 @@ def user_login(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
+                logger.info(f"User logged in: {username}")
                 return redirect('home')
             else:
+                logger.warning(f"Failed login attempt for username: {username}")
                 return redirect('login')
     else:
         form = LoginForm()
     return render(request, 'books/login.html', {'form': form})
 
 def user_logout(request):
+    logger.info(f"User logged out: {request.user.username}")
     logout(request)
     return redirect('login')
 
@@ -47,6 +53,7 @@ def favorite_books(request):
         favorites = Favorite.objects.filter(user=request.user)
         return render(request, 'books/favorites.html', {'favorites': favorites})
     else:
+        logger.warning("Unauthorized access to favorite books")
         return redirect('login')
 
 def book_catalog(request):
@@ -74,18 +81,17 @@ def book_catalog(request):
     return render(request, 'books/catalog.html', {'books': books, 'message': message})
 
 def add_to_favorites(request, book_id):
-
     book = get_object_or_404(Book, id=book_id)
     if request.user.is_authenticated:
         favorite, created = Favorite.objects.get_or_create(user=request.user, book=book)
         if created:
-            messages.success(request, 'Tne book add to favorite')
-            return redirect('catalog')
+            messages.success(request, 'The book has been added to favorites.')
+            logger.info(f"Book '{book.title}' added to favorites by {request.user.username}")
         else:
-            messages.info(request, 'The book is already in your favorites')
-            return redirect('catalog')
+            messages.info(request, 'The book is already in your favorites.')
+        return redirect('catalog')
     else:
-        messages.error(request,'Something went wrong')
+        logger.warning("Unauthorized attempt to add book to favorites")
         return redirect('login')
 
 def remove_from_favorites(request, book_id):
@@ -95,12 +101,13 @@ def remove_from_favorites(request, book_id):
         if favorite.exists():
             favorite.delete()
             messages.success(request, 'The book has been removed from favorites.')
+            logger.info(f"Book '{book.title}' removed from favorites by {request.user.username}")
         else:
             messages.info(request, 'Book not found in favorites.')
         return redirect('favorites')
     else:
+        logger.warning("Unauthorized attempt to remove book from favorites")
         return redirect('login')
-
 
 def edit_profile(request):
     try:
@@ -114,7 +121,8 @@ def edit_profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Information successfully changed')
+            messages.success(request, 'Your profile information has been updated.')
+            logger.info(f"User '{request.user.username}' updated their profile")
             return redirect('profile')
     else:
         user_form = UserForm(instance=request.user)
@@ -122,8 +130,8 @@ def edit_profile(request):
 
     return render(request, 'books/edit_profile.html', {'user_form': user_form, 'profile_form': profile_form})
 
-
 def view_profile(request):
+    logger.info(f"Profile viewed: {request.user.username}")
     return render(request, 'books/view_profile.html')
 
 def book_detail(request, book_id):
@@ -137,28 +145,34 @@ def book_detail(request, book_id):
             new_comment.book = book
             new_comment.user = request.user
             new_comment.save()
+            logger.info(f"New comment added to book '{book.title}' by {request.user.username}")
             return redirect('book_detail', book_id=book.id)
     else:
         comment_form = CommentForm()
+
     return render(request, 'books/book_detail.html', {'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
 
 def mark_as_read(request, book_id):
     if request.user.is_authenticated:
         book = get_object_or_404(Book, id=book_id)
         ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': True})
+        logger.info(f"Book '{book.title}' marked as read by {request.user.username}")
         return redirect('catalog')
     else:
+        logger.warning("Unauthorized attempt to mark book as read")
         return redirect('login')
-
 
 def mark_as_unread(request, book_id):
     if request.user.is_authenticated:
         book = get_object_or_404(Book, id=book_id)
         ReadStatus.objects.update_or_create(user=request.user, book=book, defaults={'is_read': False})
+        logger.info(f"Book '{book.title}' marked as unread by {request.user.username}")
         return redirect('catalog')
     else:
+        logger.warning("Unauthorized attempt to mark book as unread")
         return redirect('login')
 
 def view_user_profile(request, user_id):
-    user = get_object_or_404(User, id=user_id)
-    return render(request, 'books/view_profile.html', {'user': user})
+    viewed_user = get_object_or_404(User, id=user_id)
+    logger.info(f"User '{request.user.username}' viewed profile of '{viewed_user.username}'")
+    return render(request, 'books/view_profile.html', {'user': viewed_user})
