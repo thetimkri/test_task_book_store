@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Fix mistake with views">
-      <change afterPath="$PROJECT_DIR$/book_store/books/management/commands/create_random_data.py" afterDir="false" />
+    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add test forms">
+      <change afterPath="$PROJECT_DIR$/book_store/books/tests/test_views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/book_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/books/tests.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +272,39 @@
       <option name="project" value="LOCAL" />
       <updated>1712571166165</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Add a command witch makes fake Users,Books and Comments">
+      <option name="closed" value="true" />
+      <created>1712579668412</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1712579668412</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Add function to fakes users add books to wishlist and make books read">
+      <option name="closed" value="true" />
+      <created>1712581395686</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1712581395686</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Add test models">
+      <option name="closed" value="true" />
+      <created>1712586744430</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1712586744430</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Add test forms">
+      <option name="closed" value="true" />
+      <created>1712587713798</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1712587713798</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -278,17 +312,21 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ID_WIDTH">
+                <map>
+                  <entry key="Table.Default.Author.ColumnIdWidth" value="96" />
+                  <entry key="Table.Default.Date.ColumnIdWidth" value="85" />
+                  <entry key="Table.Space.CommitStatus.ColumnIdWidth" value="85" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add django-project" />
-    <MESSAGE value="add books app" />
-    <MESSAGE value="change settings.py to DB from postgresql" />
-    <MESSAGE value="add models:Book, Favorite,News" />
     <MESSAGE value="add forms Register and Login" />
     <MESSAGE value="add Views Register,login, logout" />
     <MESSAGE value="add urls path, login.html and register.html" />
@@ -310,6 +348,10 @@
     <MESSAGE value="add serializers.py, path and views" />
     <MESSAGE value="add swagger" />
     <MESSAGE value="Fix mistake with views" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix mistake with views" />
+    <MESSAGE value="Add a command witch makes fake Users,Books and Comments" />
+    <MESSAGE value="Add function to fakes users add books to wishlist and make books read" />
+    <MESSAGE value="Add test models" />
+    <MESSAGE value="Add test forms" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add test forms" />
   </component>
 </project>

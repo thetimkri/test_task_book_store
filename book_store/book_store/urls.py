@@ -58,7 +58,7 @@ urlpatterns = [
     path('mark_as_unread/<int:book_id>/', book_views.mark_as_unread, name='mark_as_unread'),
     path('user_profile/<int:user_id>/', book_views.view_user_profile, name='view_user_profile'),
     path('api/books/', book_list, name='book-list'),
-    path('api/news/', news_list, name='book-list'),
+    path('api/news/', news_list, name='news-list'),
     path('api/books/<int:book_id>/comments/', book_comments, name='book-comments'),
 
 ]
