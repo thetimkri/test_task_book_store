@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add loging">
+    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Changed the buttons design">
+      <change afterPath="$PROJECT_DIR$/book_store/books/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_store/book_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/templates/books/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/templates/books/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/templates/books/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/templates/books/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/book_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/books/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +241,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712561051971</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Changed the buttons design">
+      <option name="closed" value="true" />
+      <created>1712567430532</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1712567430532</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -277,6 +286,7 @@
     <MESSAGE value="frames for comments and links to users" />
     <MESSAGE value="Fix erore when not auth user can make book read and call mistake" />
     <MESSAGE value="Add loging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add loging" />
+    <MESSAGE value="Changed the buttons design" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed the buttons design" />
   </component>
 </project>

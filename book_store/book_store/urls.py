@@ -18,6 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from books import views as book_views
 
+from books.views import book_list
+from books.views import news_list
+from books.views import book_comments
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', book_views.register, name='register'),
@@ -34,5 +38,8 @@ urlpatterns = [
     path('mark_as_read/<int:book_id>/', book_views.mark_as_read, name='mark_as_read'),
     path('mark_as_unread/<int:book_id>/', book_views.mark_as_unread, name='mark_as_unread'),
     path('user_profile/<int:user_id>/', book_views.view_user_profile, name='view_user_profile'),
+    path('api/books/', book_list, name='book-list'),
+    path('api/news/', news_list, name='book-list'),
+    path('api/books/<int:book_id>/comments/', book_comments, name='book-comments'),
 
 ]

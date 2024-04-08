@@ -7,6 +7,10 @@ from .forms import UserForm, ProfileForm, CommentForm
 from django.db.models import Q
 from django.contrib.auth.models import User
 import logging
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .models import Book
+from .serializers import BookSerializer,NewsSerializer,CommentSerializer
 
 logger = logging.getLogger('django')
 def register(request):
@@ -176,3 +180,25 @@ def view_user_profile(request, user_id):
     viewed_user = get_object_or_404(User, id=user_id)
     logger.info(f"User '{request.user.username}' viewed profile of '{viewed_user.username}'")
     return render(request, 'books/view_profile.html', {'user': viewed_user})
+
+@api_view(['GET'])
+def book_list(request):
+    books = Book.objects.all()
+    serializer = BookSerializer(books, many=True)
+    logger.info("Book list requested")
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def news_list(request):
+    news = News.objects.all()
+    serializer = NewsSerializer(news, many=True)
+    logger.info("News list requested")
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def book_comments(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    comments = book.comments.all()
+    serializer = CommentSerializer(comments, many=True)
+    logger.info(f"Comments for book {book_id} requested")
+    return Response(serializer.data)
