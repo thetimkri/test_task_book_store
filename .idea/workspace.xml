@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Fix mistake with views">
+      <change afterPath="$PROJECT_DIR$/book_store/books/management/commands/create_random_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/templates/books/catalog.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/templates/books/catalog.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
