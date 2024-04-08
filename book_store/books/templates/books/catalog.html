@@ -24,6 +24,8 @@
     </h3>
     <p>Author: {{ book.author }}</p>
     <p>{{ book.description }}</p>
+    <p>Favorites: {{ book.favorites_count }}</p>
+    <p>Read: {{ book.read_count }}</p>
     <p><a href="{% url 'book_detail' book_id=book.id %}">Comments ({{ book.comment_count }})</a></p>
     <a href="{% url 'add_to_favorites' book.id %}" class="btn btn-primary">Add to favorite</a>
     {% if book.is_read %}

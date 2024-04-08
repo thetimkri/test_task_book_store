@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from .models import Book, Favorite, News,Profile,ReadStatus
 from django.contrib import messages
 from .forms import UserForm, ProfileForm, CommentForm
-from django.db.models import Q
+from django.db.models import Q,Count
 from django.contrib.auth.models import User
 import logging
 from rest_framework.response import Response
@@ -71,6 +71,11 @@ def book_catalog(request):
         message = f"Found {books.count()} books matching your query."
     else:
         books = Book.objects.all()
+
+    books = books.annotate(
+        favorites_count=Count('favorite', distinct=True),
+        read_count=Count('readstatus', filter=Q(readstatus__is_read=True), distinct=True)
+    )
 
     if request.user.is_authenticated:
         favorite_books = {fav.book.id: fav for fav in request.user.favorite_set.all()}
