@@ -37,8 +37,9 @@ def user_login(request):
                 logger.info(f"User logged in: {username}")
                 return redirect('home')
             else:
+                messages.error(request, "Invalid username or password. Please sign up.")
                 logger.warning(f"Failed login attempt for username: {username}")
-                return redirect('login')
+                return redirect('register')
     else:
         form = LoginForm()
     return render(request, 'books/login.html', {'form': form})
@@ -144,18 +145,27 @@ def book_detail(request, book_id):
     comments = book.comments.all()
     new_comment = None
     if request.method == 'POST':
-        comment_form = CommentForm(data=request.POST)
-        if comment_form.is_valid():
-            new_comment = comment_form.save(commit=False)
-            new_comment.book = book
-            new_comment.user = request.user
-            new_comment.save()
-            logger.info(f"New comment added to book '{book.title}' by {request.user.username}")
-            return redirect('book_detail', book_id=book.id)
+        if request.user.is_authenticated:
+            comment_form = CommentForm(data=request.POST)
+            if comment_form.is_valid():
+                new_comment = comment_form.save(commit=False)
+                new_comment.book = book
+                new_comment.user = request.user
+                new_comment.save()
+                logger.info(f"New comment added to book '{book.title}' by {request.user.username}")
+                return redirect('book_detail', book_id=book.id)
+        else:
+            messages.error(request, "You must be logged in to post a comment.")
+            return redirect('login')
     else:
         comment_form = CommentForm()
 
-    return render(request, 'books/book_detail.html', {'book': book, 'comments': comments, 'new_comment': new_comment, 'comment_form': comment_form})
+    return render(request, 'books/book_detail.html', {
+        'book': book,
+        'comments': comments,
+        'new_comment': new_comment,
+        'comment_form': comment_form
+    })
 
 def mark_as_read(request, book_id):
     if request.user.is_authenticated:
