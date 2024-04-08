@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Changed the buttons design">
-      <change afterPath="$PROJECT_DIR$/book_store/books/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="add serializers.py, path and views">
       <change beforePath="$PROJECT_DIR$/book_store/book_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_store/book_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_store/books/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/books/views.py" afterDir="false" />
@@ -249,7 +247,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712567430532</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="add serializers.py, path and views">
+      <option name="closed" value="true" />
+      <created>1712569908301</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1712569908301</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,6 +293,7 @@
     <MESSAGE value="Fix erore when not auth user can make book read and call mistake" />
     <MESSAGE value="Add loging" />
     <MESSAGE value="Changed the buttons design" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the buttons design" />
+    <MESSAGE value="add serializers.py, path and views" />
+    <option name="LAST_COMMIT_MESSAGE" value="add serializers.py, path and views" />
   </component>
 </project>

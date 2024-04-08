@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view
 from .models import Book
 from .serializers import BookSerializer,NewsSerializer,CommentSerializer
 
+
 logger = logging.getLogger('django')
 def register(request):
     if request.method == "POST":
