@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from books.models import Book, Comment
+from books.models import Book, Comment,Favorite,ReadStatus
 from django.contrib.auth.models import User
 from faker import Faker
 import random
@@ -25,6 +25,16 @@ class Command(BaseCommand):
             user.profile.location = fake.city()
             user.profile.birth_date = fake.date_of_birth()
             user.save()
+
+            favorite_books_count = random.randint(0, Book.objects.count())
+            favorite_books = random.sample(list(Book.objects.all()), favorite_books_count)
+            for book in favorite_books:
+                Favorite.objects.create(user=user, book=book)
+
+            read_books_count = random.randint(0, Book.objects.count())
+            read_books = random.sample(list(Book.objects.all()), read_books_count)
+            for book in read_books:
+                ReadStatus.objects.create(user=user, book=book, is_read=True)
 
     logger.info(f"Start command to make Fake Users with Profile")
 
