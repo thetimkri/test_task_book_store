@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add test views and fix urls name">
+    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add messges when no news">
+      <change afterPath="$PROJECT_DIR$/.env_templates" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/book_store/book_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +31,9 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2eleLQYNmSqJxmzTyhU14abqXnT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -43,6 +48,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/etc/ssl" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -310,7 +316,63 @@
       <option name="project" value="LOCAL" />
       <updated>1712608438688</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Add soft to avtomatic create UML diagram">
+      <option name="closed" value="true" />
+      <created>1712652476597</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1712652476597</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add diagram books_app">
+      <option name="closed" value="true" />
+      <created>1712659040436</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1712659040436</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add requirements.txt">
+      <option name="closed" value="true" />
+      <created>1712659080157</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1712659080157</updated>
+    </task>
+    <task id="LOCAL-00035" summary="Add files of migrations">
+      <option name="closed" value="true" />
+      <created>1712659396128</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1712659396128</updated>
+    </task>
+    <task id="LOCAL-00036" summary="add docker-compose.yml and Dockerfile for running App and PG">
+      <option name="closed" value="true" />
+      <created>1712661051902</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1712661051902</updated>
+    </task>
+    <task id="LOCAL-00037" summary="add to gitignore logs dic">
+      <option name="closed" value="true" />
+      <created>1712661079370</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1712661079370</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Add messges when no news">
+      <option name="closed" value="true" />
+      <created>1712665432305</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1712665432305</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -333,13 +395,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add Views Register,login, logout" />
-    <MESSAGE value="add urls path, login.html and register.html" />
-    <MESSAGE value="add books.app to settings.py" />
-    <MESSAGE value="Add views, urls and html templates" />
-    <MESSAGE value="Add views, urls and html from catalogs" />
-    <MESSAGE value="Add navbar" />
-    <MESSAGE value="Add notifications, for def to add to favorites" />
     <MESSAGE value="Add button and def for to delete favorites books" />
     <MESSAGE value="Add signals to add news new books" />
     <MESSAGE value="Add extra info abaur user" />
@@ -358,6 +413,13 @@
     <MESSAGE value="Add test models" />
     <MESSAGE value="Add test forms" />
     <MESSAGE value="Add test views and fix urls name" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add test views and fix urls name" />
+    <MESSAGE value="Add soft to avtomatic create UML diagram" />
+    <MESSAGE value="Add diagram books_app" />
+    <MESSAGE value="Add requirements.txt" />
+    <MESSAGE value="Add files of migrations" />
+    <MESSAGE value="add docker-compose.yml and Dockerfile for running App and PG" />
+    <MESSAGE value="add to gitignore logs dic" />
+    <MESSAGE value="Add messges when no news" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add messges when no news" />
   </component>
 </project>
