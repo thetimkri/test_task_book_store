@@ -3,6 +3,8 @@ version: '3.8'
 services:
   db:
     image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: 'bookstore_db'
       POSTGRES_USER: 'admin'
@@ -11,9 +13,14 @@ services:
       - '5433:5432'
 
   web:
+    environment:
+      - DATABASE_HOST=db
     build: .
     command: sh -c "python /code/manage.py makemigrations && python /code/manage.py migrate && python /code/manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
     depends_on:
       - db
+
+volumes:
+  postgres_data:
