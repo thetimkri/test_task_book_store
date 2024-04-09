@@ -8,5 +8,7 @@
     <h3>{{ news.title }}</h3>
     <p>{{ news.content }}</p>
     <hr>
+{% empty %}
+    <p>News are coming soon!</p>
 {% endfor %}
 {% endblock %}
