@@ -32,7 +32,17 @@
 
 1. Клонируйте репозиторий:
 
+HTTPS
 ```
+https://github.com/thetimkri/test_task_book_store.git
+```
+SSH 
+```
+git@github.com:thetimkri/test_task_book_store.git
+```
+GitHub CLI
+```
+gh repo clone thetimkri/test_task_book_store
 ```
 
 2. Настройти конфигурация .env
