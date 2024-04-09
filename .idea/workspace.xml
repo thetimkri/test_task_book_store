@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add test forms">
-      <change afterPath="$PROJECT_DIR$/book_store/books/tests/test_views.py" afterDir="false" />
+    <list default="true" id="95a196fc-e020-414e-956f-c715b0987d14" name="Changes" comment="Add test views and fix urls name">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/book_store/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_store/books/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_store/book_store/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_store/book_store/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712587713798</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Add test views and fix urls name">
+      <option name="closed" value="true" />
+      <created>1712608438688</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1712608438688</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -327,7 +333,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add forms Register and Login" />
     <MESSAGE value="add Views Register,login, logout" />
     <MESSAGE value="add urls path, login.html and register.html" />
     <MESSAGE value="add books.app to settings.py" />
@@ -352,6 +357,7 @@
     <MESSAGE value="Add function to fakes users add books to wishlist and make books read" />
     <MESSAGE value="Add test models" />
     <MESSAGE value="Add test forms" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add test forms" />
+    <MESSAGE value="Add test views and fix urls name" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add test views and fix urls name" />
   </component>
 </project>
